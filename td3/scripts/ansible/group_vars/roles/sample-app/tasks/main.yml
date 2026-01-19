@@ -1,0 +1,23 @@
+---
+- name: Copy sample app files
+  copy:
+    src: "{{ item }}"
+    dest: "/home/app-user/{{ item | basename }}"
+    owner: app-user
+    group: app-user
+    mode: "0644"
+  with_fileglob:
+    - "{{ role_path }}/files/*"
+  become: true
+
+- name: Start sample app using PM2 (as app-user)
+  shell: pm2 start app.config.js
+  args:
+    chdir: /home/app-user/
+  become: true
+  become_user: app-user
+
+- name: Save PM2 process list (as app-user)
+  shell: pm2 save
+  become: true
+  become_user: app-user

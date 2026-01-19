@@ -1,0 +1,8 @@
+- name: Configure servers to run the sample-app
+  hosts: sample_app_instances
+  gather_facts: true
+  become: true
+
+  roles:
+    - role: nodejs-app
+    - role: sample-app
