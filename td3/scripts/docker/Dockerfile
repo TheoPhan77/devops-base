@@ -1,6 +1,6 @@
-FROM node:21.7
+FROM node:21-alpine
 
-WORKDIR /home/node/app
+WORKDIR /usr/src/app
 
 COPY app.js .
 

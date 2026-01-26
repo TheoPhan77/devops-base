@@ -3,12 +3,12 @@ provider "aws" {
 }
 
 module "asg" {
-  source = "github.com/brikis98/devops-base//ch3/tofu/modules/asg"
+  source = "github.com/TheoPhan77/devops-base//td3/scripts/tofu/modules/asg"
 
   name = "sample-app-asg"                                   
 
   # TODO: fill in with your own AMI ID!
-  ami_id        = "ami-0a354430146d0786c"                   
+  ami_id        = "ami-077a1d1389f5bee56"                   
   user_data     = filebase64("${path.module}/user-data.sh") 
   app_http_port = 8080                                      
 
@@ -27,7 +27,7 @@ module "asg" {
 }
 
 module "alb" {
-  source = "github.com/brikis98/devops-base//ch3/tofu/modules/alb"
+  source = "github.com/TheoPhan77/devops-base//td3/scripts/tofu/modules/alb"
 
   name                  = "sample-app-alb" 
   alb_http_port         = 80               
