@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1769461164019" clover="3.2.0">
+  <project timestamp="1769461164020" name="All files">
+    <metrics statements="16" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="3" elements="24" coveredelements="22" complexity="0" loc="16" ncloc="16" packages="1" files="1" classes="1"/>
+    <file name="app.js" path="/mnt/c/Users/theo/E4/DevOps Data/devops-base/td4/scripts/sample-app/app.js">
+      <metrics statements="16" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="3"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="15" count="3" type="stmt"/>
+      <line num="16" count="3" type="stmt"/>
+      <line num="18" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="22" count="2" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="30" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

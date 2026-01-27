@@ -3,9 +3,9 @@ provider "aws" {
 }
 
 module "function" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
+  source = "../../../../../td3/scripts/tofu/modules/lambda"
 
-  name = "lambda-sample"         
+  name = "lambda-sample-td4-theo"         
 
   src_dir = "${path.module}/src" 
   runtime = "nodejs20.x"         
@@ -20,9 +20,12 @@ module "function" {
 }
 
 module "gateway" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
+  source = "../../../../../td3/scripts/tofu/modules/api-gateway"
 
-  name               = "lambda-sample"              
+  name               = "lambda-sample-td4-theo"              
   function_arn       = module.function.function_arn 
   api_gateway_routes = ["GET /"]                    
 }
+
+
+
