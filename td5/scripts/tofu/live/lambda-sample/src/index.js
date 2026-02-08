@@ -1,3 +1,7 @@
-exports.handler = (event, context, callback) => {
-  callback(null, {statusCode: 200, body: "Fundamentals of DevOps!"});
+exports.handler = async () => {
+  return {
+    statusCode: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: "Hello, World!" }),
+  };
 };
