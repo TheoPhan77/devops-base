@@ -18,3 +18,4 @@ node_modules/
 Thumbs.db
 ~$*.docx
 *.tmp
+td3/scripts/tofu/modules/lambda/*.zip
