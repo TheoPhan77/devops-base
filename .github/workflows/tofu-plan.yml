@@ -1,10 +1,9 @@
 name: Tofu Plan
 
 on:
-  workflow_dispatch:
-  #pull_request:                                                             
-    #branches: ["main"]
-    #paths: ["ch5/tofu/live/lambda-sample/**"]
+  pull_request:                                                             
+    branches: ["main"]
+    paths: ["td5/scripts/tofu/live/lambda-sample/**"]
 
 jobs:
   plan:
@@ -20,7 +19,7 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v3
         with:
           # TODO: fill in your IAM role ARN!
-          role-to-assume: arn:aws:iam::111111111111:role/lambda-sample-plan 
+          role-to-assume: arn:aws:iam::074235798626:role/lambda-sample-plan 
           role-session-name: plan-${{ github.run_number }}-${{ github.actor }}
           aws-region: us-east-2
 
@@ -28,7 +27,7 @@ jobs:
 
       - name: tofu plan                                                     
         id: plan
-        working-directory: ch5/tofu/live/lambda-sample
+        working-directory: td5/scripts/tofu/live/lambda-sample
         run: |
           tofu init -no-color -input=false
           tofu plan -no-color -input=false -lock=false
