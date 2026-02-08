@@ -1,4 +1,4 @@
-FROM node:21.7
+FROM node:21.7@sha256:4b232062fa976e3a966c49e9b6279efa56c8d207a67270868f51b3d155c4e33d
 
 WORKDIR /home/node/app
 
@@ -6,8 +6,6 @@ COPY package.json .
 COPY package-lock.json .
 
 RUN npm ci --only=production
-
-COPY *.js .
 
 EXPOSE 8080
 

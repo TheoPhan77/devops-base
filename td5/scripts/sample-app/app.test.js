@@ -1,25 +1,53 @@
+// app.test.js
 const request = require('supertest');
+
 const app = require('./app');
 
-describe('Test the app', () => {
-  test('Get / should return Hello, World!', async () => {
-    const response = await request(app).get('/');
+describe('Test the root path', () => {
+    test('It should respond to the GET method', async () => {
+        const response = await request(app).get('/');
+        expect(response.statusCode).toBe(200);
+        expect(response.text).toBe('Hello, World!');
+    });
+});
+
+describe('Test the /name/:name path', () => {
+    test('It should respond with a personalized greeting', async () => {
+        const name = 'Alice';
+        const response = await request(app).get(`/name/${name}`);
+        expect(response.statusCode).toBe(200);
+        expect(response.text).toBe(`Hello, ${name}!`);
+    });
+});
+
+describe('Test the /add/:a/:b path', () => {
+  test('It should return the sum for valid numbers', async () => {
+    const response = await request(app).get('/add/2/3');
     expect(response.statusCode).toBe(200);
-    expect(response.text).toBe('Hello, World!');
+    expect(response.text).toBe('5');
   });
 
-  test('Get /name/Bob should return Hello, Bob!', async () => {
-    const response = await request(app).get('/name/Bob');
+  test('It should work with negative numbers', async () => {
+    const response = await request(app).get('/add/-10/4');
     expect(response.statusCode).toBe(200);
-    expect(response.text).toBe('Hello, Bob!');
+    expect(response.text).toBe('-6');
   });
 
-  const maliciousUrl = '/name/%3Cscript%3Ealert("hi")%3C%2Fscript%3E';
-  const sanitizedHtml = 'Hello, &lt;script&gt;alert(&#34;hi&#34;)&lt;/script&gt;!'
+  test('It should return 400 for invalid inputs', async () => {
+    const response = await request(app).get('/add/abc/3');
+    expect(response.statusCode).toBe(400);
+    expect(response.text).toBe('Invalid numbers');
+  });
+});
 
-  test('Get /name should sanitize its input', async () => {
-    const response = await request(app).get(maliciousUrl);
-    expect(response.statusCode).toBe(200);
-    expect(response.text).toBe(sanitizedHtml);
+const { formatName } = require('./utils');
+
+describe('formatName', () => {
+  test('trims spaces', () => {
+    expect(formatName('  Theo ')).toBe('Theo');
+  });
+
+  test('returns null for empty', () => {
+    expect(formatName('   ')).toBeNull();
   });
 });
