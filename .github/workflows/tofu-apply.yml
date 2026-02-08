@@ -1,8 +1,9 @@
 name: Tofu Apply
 on:
-  push:                                                                      
-    branches: ["main"]
-    paths: ["ch5/tofu/live/lambda-sample/**"]
+  workflow_dispatch:
+  #push:                                                                      
+    #branches: ["main"]
+    #paths: ["ch5/tofu/live/lambda-sample/**"]
 jobs:
   apply:
     name: "Tofu Apply"
