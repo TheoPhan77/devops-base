@@ -14,5 +14,5 @@ jobs:
         run: npm install
 
       - name: Run tests                   
-        working-directory: scripts/sample-app
+        working-directory: td5/scripts/sample-app
         run: npm test
