@@ -4,7 +4,7 @@ const { formatName } = require('./utils');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+  res.send('DevOps Labs!');
 });
 
 app.get('/name/:name', (req, res) => {
